@@ -162,7 +162,7 @@ export default {
         // Paagman
         case 186555:
           configWithOptions = {
-            magentoUrl: "https://upgrade.vogels.com/graphql",
+            magentoUrl: "https://test-admin.paagman.nl/graphql",
             productsLimit: "1",
             contentTypes: "page",
             selectionOptions: "products, categories, pages, link",
