@@ -20,19 +20,33 @@
       >
         {{ item.url }}
       </div>
-      <div class="uk-text-muted" v-if="item.url_key">{{ item.url_key }}</div>
+      <table>
+        <tr class="uk-text-muted" v-if="item.product_count">
+          <td class="integration-table__title">Products:</td>
+          <td class="integration-table__value">{{ item.product_count }}</td>
+        </tr>
+        <tr class="uk-text-muted" v-if="item.url_key">
+          <td class="integration-table__title">URL:</td>
+          <td class="integration-table__value">{{ item.url_key }}</td>
+        </tr>
+        <tr class="uk-text-muted" v-if="item.__typename">
+          <td class="integration-table__title">Type:</td>
+          <td class="integration-table__value">{{ item.__typename }}</td>
+        </tr>
+        <tr class="uk-text-muted" v-if="item.total_count">
+          <td class="integration-table__title">Total count:</td>
+          <td class="integration-table__value">{{ item.total_count }}</td>
+        </tr>
+        <tr class="uk-text-muted" v-if="item.full_slug">
+          <td class="integration-table__title">Full slug:</td>
+          <td class="integration-table__value">{{ item.full_slug }}</td>
+        </tr>
+      </table>
       <div
         class="uk-text-muted"
         v-if="[true, false].includes(item.openInNewTab)"
       >
         {{ item.openNewTab ? "Opens in new tab" : "Opens in same tab" }}
-      </div>
-
-      <div class="uk-text-muted" v-if="item.full_slug">
-        {{ item.full_slug }}
-      </div>
-      <div class="uk-text-muted" v-if="item.__typename">
-        {{ item.__typename }}
       </div>
     </div>
 
@@ -129,5 +143,17 @@ export default {
   flex-grow: 1;
   padding-left: 10px;
   word-wrap: break-word;
+}
+
+.integration-table__title {
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 14px;
+  width: 30%;
+}
+
+.integration-table__value {
+  font-size: 11px;
+  line-height: 14px;
 }
 </style>

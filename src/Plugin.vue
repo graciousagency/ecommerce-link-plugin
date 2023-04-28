@@ -162,11 +162,11 @@ export default {
         // Paagman
         case 186555:
           configWithOptions = {
-            magentoUrl: "https://test-admin.paagman.nl/graphql,
+            magentoUrl: "https://test-admin.paagman.nl/graphql",
             productsLimit: "1",
             contentTypes: "page",
             selectionOptions: "products, categories, pages, link",
-            primaryColor: "#E00076",
+            primaryColor: "#E00076"
           };
           break;
         // Tafelzeilonline
@@ -176,7 +176,7 @@ export default {
             productsLimit: "1",
             contentTypes: "page",
             selectionOptions: "products, categories, pages, link",
-            primaryColor: "#ef8177",
+            primaryColor: "#ef8177"
           };
           break;
         default:

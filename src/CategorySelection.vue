@@ -144,6 +144,13 @@ export default {
                   uid
                   name
                   url_key
+                  product_count
+                  children {
+                    uid
+                    name
+                    url_key
+                    product_count
+                  }
                 }
               }
             }
