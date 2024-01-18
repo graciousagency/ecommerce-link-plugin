@@ -162,7 +162,7 @@ export default {
         // Paagman
         case 186555:
           configWithOptions = {
-            magentoUrl: "https://test-admin.paagman.nl/graphql",
+            magentoUrl: "https://acc-admin.paagman.nl/graphql",
             productsLimit: "1",
             contentTypes: "page",
             selectionOptions: "products, categories, pages, link",
@@ -177,6 +177,16 @@ export default {
             contentTypes: "page",
             selectionOptions: "products, categories, pages, link",
             primaryColor: "#ef8177"
+          };
+          break;
+        // PRAZ
+        case 224162:
+          configWithOptions = {
+            magentoUrl: "https://admin.praz.com/graphql",
+            productsLimit: "1",
+            contentTypes: "page",
+            selectionOptions: "products, categories, pages, link",
+            primaryColor: "#007aff"
           };
           break;
         default:
