@@ -24,6 +24,8 @@
           >
             <option value="name">Name</option>
             <option value="sku">SKU (exact match)</option>
+            <option value="ean">EAN (exact match)</option>
+            <option value="author">Auteur</option>
           </select>
         </form>
       </div>
@@ -131,6 +133,20 @@ export default {
         return {
           sku: {
             eq: this.searchTerm,
+          },
+        };
+        //NOTE: Configured for Paagman
+      } else if (this.findBy == "ean") {
+        return {
+          ean: {
+            eq: this.searchTerm,
+          },
+        };
+        //NOTE: Configured for Paagman
+      } else if (this.findBy == "author") {
+        return {
+          book_author: {
+            match: this.searchTerm,
           },
         };
       }

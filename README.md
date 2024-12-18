@@ -2,6 +2,10 @@
 
 > A Storyblok Field-Type Plugin to fetch products, categories, storyblok pages and set an external link.
 
+## Pre-requisites
+
+- Node 14.x.x
+
 ## Project setup
 
 ```
