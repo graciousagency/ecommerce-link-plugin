@@ -20,6 +20,9 @@
   ],
   "version": "2.0.0",
   "private": true,
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "dev": "npm run serve",
     "serve": "vue-cli-service serve",
