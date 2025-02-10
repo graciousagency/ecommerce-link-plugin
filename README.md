@@ -5,6 +5,8 @@
 ## Pre-requisites
 
 - Node 14.x.x
+- Vue CLI service 3.12.1
+- Webpack 4.46.0
 
 ## Project setup
 
@@ -135,3 +137,14 @@ If you select a external link it will be added to the `item` property
 | url          | string  | The url you input from the input field                         |
 | openInNewTab | boolean | The value from the radio input                                 |
 | type         | "link"  | The type to determine the what the item is in this case `link` |
+
+## Dynamic products
+
+If you select a dynamic product it will be added to the `item` property
+
+| Property    | type               | Description                                                       |
+| ----------- | ------------------ | ----------------------------------------------------------------- |
+| id          | string             | Attribute value in the query OR category uid in the query         |
+| name        | string             | Attribute label OR category name in the query                     |
+| filterValue | object             | The filter value to be used in the query on the frontend          |
+| type        | "dynamic-products" | The type to determine the what the item is in this case `dynamic` |
