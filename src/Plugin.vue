@@ -140,20 +140,6 @@
 </template>
 
 <script>
-// [x] have to be able to select category as dynamic product type
-// [x] show all categories as options
-// [x] make pagination work
-// [x] allow searching for category with searchbar
-// [x] when selecting a category, fill the slider with 12 products
-// [x] have to send the category uid to the query
-// [x] get brands to show as options
-// [x] adjust the getOptions query to include searchterm -- impossible to TEXT type attributes
-// [x] add the right brand when its option is clicked
-// [x] do above for series
-// [x] do above for author
-// [x] add search functionality for the custom attributes
-// [x] close the selection modal when the user clicks on an option
-
 import IntegrationItem from "./IntegrationItem";
 import ProductsSelection from "./ProductsSelection";
 import DynamicProductsSelection from "./DynamicProductsSelection";
@@ -277,7 +263,6 @@ export default {
     },
     selectItem(item) {
       this.model.item = item;
-      console.log(this.model);
       this.model.items = [];
     },
     selectItems(item) {

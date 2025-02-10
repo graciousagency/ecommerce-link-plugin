@@ -260,8 +260,6 @@ export default {
             query: getProducts,
           })
           .then((result) => {
-            console.log({ result: result.data.data });
-
             const seriesOptions = result.data.data.products.aggregations
               .find((agg) => agg.attribute_code === "book_series")
               .options.sort((a, b) => {
