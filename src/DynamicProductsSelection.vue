@@ -13,9 +13,28 @@
           />
         </form>
       </div>
+
+      <div class="uk-flex uk-flex-middle" v-if="showExactValueInput">
+        <div class="uk-margin-right">Or</div>
+
+        <form class="uk-margin-right">
+          <input
+            v-model="exactValueInput"
+            placeholder="Fill in exact value"
+            class="uk-width-1-1"
+          />
+        </form>
+        <button
+          class="uk-button uk-margin-right"
+          @click.prevent="submitExactValue"
+        >
+          Submit exact value
+        </button>
+      </div>
+
       <div class="">
         <form class="uk-margin-right" @submit.prevent="search">
-          <label class="uk-margin-right">Find by </label>
+          <label class="uk-margin-right">Type </label>
           <select
             name="findBy"
             @change="search()"
@@ -29,6 +48,7 @@
           </select>
         </form>
       </div>
+
       <div class="uk-position-relative uk-text-nowrap">
         <div slot="actions">
           <a class="uk-button" @click.prevent="close">
@@ -84,6 +104,8 @@ const rootCategoryUid = "MjQxMzQ=";
 const officeCategoryUid = "MzE5NTU=";
 const booksCategoryUid = "MjQxMzU=";
 
+const typesThatShowExactValueInput = ["author", "series"];
+
 export default {
   props: {
     config: Object,
@@ -107,6 +129,8 @@ export default {
       },
       showLimitError: false,
       loading: true,
+      exactValueInput: "",
+      showExactValueInput: true,
     };
   },
   computed: {
@@ -136,6 +160,12 @@ export default {
     search() {
       this.page = 1;
       this.getOptions();
+
+      if (typesThatShowExactValueInput.includes(this.findBy)) {
+        this.showExactValueInput = true;
+      } else {
+        this.showExactValueInput = false;
+      }
     },
     getFilters() {
       // Forms the filters to query the options with
@@ -331,7 +361,31 @@ export default {
       this.loading = false;
       this.close();
     },
+    submitExactValue() {
+      const attributeCodes = {
+        author: "book_author",
+        series: "book_series",
+      };
 
+      const attributeCode = attributeCodes[this.findBy];
+
+      if (!attributeCode || !this.exactValueInput) {
+        return;
+      }
+
+      this.selectProduct({
+        id: this.exactValueInput,
+        name: this.exactValueInput,
+        filterValue: {
+          [attributeCode]: {
+            eq: this.exactValueInput,
+          },
+        },
+        type: "dynamic-products",
+      });
+
+      this.close();
+    },
     loadPage(page) {
       this.page = page;
       this.getOptions();
