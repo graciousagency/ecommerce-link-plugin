@@ -46,7 +46,13 @@
         <option value="" disabled>Select item type</option>
         xw
         <option v-if="isEnabledSelection('products')" value="products">
-          Products
+          Products (Manual)
+        </option>
+        <option
+          v-if="isEnabledSelection('dynamic-products')"
+          value="dynamic-products"
+        >
+          Products (Dynamic)
         </option>
         <option v-if="isEnabledSelection('categories')" value="categories">
           Categories
@@ -104,6 +110,16 @@
         :currentProducts="model.items"
         :close="closeSelection"
       />
+      <DynamicProductsSelection
+        v-if="selectionType === 'dynamic-products'"
+        :config="config"
+        :selectProduct="selectItem"
+        :selectProducts="selectItems"
+        :currentProduct="model.item"
+        :deleteItem="deleteItem"
+        :currentProducts="model.items"
+        :close="closeSelection"
+      />
       <CategorySelection
         v-if="selectionType === 'categories'"
         :config="config"
@@ -124,8 +140,23 @@
 </template>
 
 <script>
+// [x] have to be able to select category as dynamic product type
+// [x] show all categories as options
+// [x] make pagination work
+// [x] allow searching for category with searchbar
+// [x] when selecting a category, fill the slider with 12 products
+// [x] have to send the category uid to the query
+// [x] get brands to show as options
+// [x] adjust the getOptions query to include searchterm -- impossible to TEXT type attributes
+// [x] add the right brand when its option is clicked
+// [x] do above for series
+// [x] do above for author
+// [x] add search functionality for the custom attributes
+// [x] close the selection modal when the user clicks on an option
+
 import IntegrationItem from "./IntegrationItem";
 import ProductsSelection from "./ProductsSelection";
+import DynamicProductsSelection from "./DynamicProductsSelection";
 import CategorySelection from "./CategorySelection";
 import PagesSelection from "./PagesSelection";
 import draggable from "vuedraggable";
@@ -165,7 +196,8 @@ export default {
             magentoUrl: "https://acc-admin.paagman.nl/graphql",
             productsLimit: "1",
             contentTypes: "page",
-            selectionOptions: "products, categories, pages, link",
+            selectionOptions:
+              "products, dynamic-products, categories, pages, link",
             primaryColor: "#E00076",
           };
           break;
@@ -245,6 +277,7 @@ export default {
     },
     selectItem(item) {
       this.model.item = item;
+      console.log(this.model);
       this.model.items = [];
     },
     selectItems(item) {
@@ -255,6 +288,7 @@ export default {
   components: {
     IntegrationItem,
     ProductsSelection,
+    DynamicProductsSelection,
     CategorySelection,
     PagesSelection,
     draggable,

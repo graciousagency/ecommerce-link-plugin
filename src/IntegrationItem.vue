@@ -10,7 +10,7 @@
       <img :src="item.small_image.url" class="integration-item__image" />
     </div>
     <div class="integration-item__right">
-      <div class="uk-form-text-label">{{ item.name }}</div>
+      <div class="uk-form-text-label">{{ item.name || item.label }}</div>
       <div
         :class="{
           ['uk-form-text-label']: item && item.type === 'link',
@@ -21,9 +21,17 @@
         {{ item.url }}
       </div>
       <table>
-        <tr class="uk-text-muted" v-if="item.product_count">
+        <tr class="uk-text-muted" v-if="typeof item.product_count === 'number'">
           <td class="integration-table__title">Products:</td>
-          <td class="integration-table__value">{{ item.product_count }}</td>
+          <td class="integration-table__value">
+            {{ item.product_count }}
+          </td>
+        </tr>
+        <tr class="uk-text-muted" v-if="typeof item.count === 'number'">
+          <td class="integration-table__title">Products:</td>
+          <td class="integration-table__value">
+            {{ item.count }}
+          </td>
         </tr>
         <tr class="uk-text-muted" v-if="item.url_key">
           <td class="integration-table__title">URL:</td>
