@@ -140,7 +140,7 @@ If you select a external link it will be added to the `item` property
 
 ## Dynamic products
 
-If you select a dynamic product it will be added to the `item` property
+If you select dynamic products it will be added to the `item` property
 
 | Property    | type               | Description                                                       |
 | ----------- | ------------------ | ----------------------------------------------------------------- |
