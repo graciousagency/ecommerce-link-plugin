@@ -46,7 +46,13 @@
         <option value="" disabled>Select item type</option>
         xw
         <option v-if="isEnabledSelection('products')" value="products">
-          Products
+          Products (Manual)
+        </option>
+        <option
+          v-if="isEnabledSelection('dynamic-products')"
+          value="dynamic-products"
+        >
+          Products (Dynamic)
         </option>
         <option v-if="isEnabledSelection('categories')" value="categories">
           Categories
@@ -104,6 +110,16 @@
         :currentProducts="model.items"
         :close="closeSelection"
       />
+      <DynamicProductsSelection
+        v-if="selectionType === 'dynamic-products'"
+        :config="config"
+        :selectProduct="selectItem"
+        :selectProducts="selectItems"
+        :currentProduct="model.item"
+        :deleteItem="deleteItem"
+        :currentProducts="model.items"
+        :close="closeSelection"
+      />
       <CategorySelection
         v-if="selectionType === 'categories'"
         :config="config"
@@ -126,6 +142,7 @@
 <script>
 import IntegrationItem from "./IntegrationItem";
 import ProductsSelection from "./ProductsSelection";
+import DynamicProductsSelection from "./DynamicProductsSelection";
 import CategorySelection from "./CategorySelection";
 import PagesSelection from "./PagesSelection";
 import draggable from "vuedraggable";
@@ -165,7 +182,8 @@ export default {
             magentoUrl: "https://acc-admin.paagman.nl/graphql",
             productsLimit: "1",
             contentTypes: "page",
-            selectionOptions: "products, categories, pages, link",
+            selectionOptions:
+              "products, dynamic-products, categories, pages, link",
             primaryColor: "#E00076",
           };
           break;
@@ -255,6 +273,7 @@ export default {
   components: {
     IntegrationItem,
     ProductsSelection,
+    DynamicProductsSelection,
     CategorySelection,
     PagesSelection,
     draggable,
