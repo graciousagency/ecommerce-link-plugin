@@ -207,6 +207,16 @@ export default {
             primaryColor: "#F31616",
           };
           break;
+        // Contimeta
+        case 321522:
+          configWithOptions = {
+            magentoUrl: "http://admin.contimeta.com:8080/graphql",
+            productsLimit: "1",
+            contentTypes: "page",
+            selectionOptions: "products, categories, pages, link",
+            primaryColor: "#2478FF",
+          };
+          break;
         default:
           break;
       }
