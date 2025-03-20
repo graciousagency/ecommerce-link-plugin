@@ -210,7 +210,7 @@ export default {
         // Contimeta
         case 321522:
           configWithOptions = {
-            magentoUrl: "http://admin.contimeta.com:8080/graphql",
+            magentoUrl: "https://staging-admin.contimeta.comgraphql",
             productsLimit: "1",
             contentTypes: "page",
             selectionOptions: "products, categories, pages, link",
